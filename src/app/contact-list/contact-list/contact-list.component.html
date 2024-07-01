@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Filter" [(ngModel)]="filterText"
+            (ngModelChange)="onFilterChange()" />
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th>ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of getcontactlistData">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.firstName }}</td>
+                    <td>{{ item.lastName }}</td>
+                    <td>{{ item.email }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="onPageChange($event)"></ngb-pagination> -->
+</div>
