@@ -56,45 +56,7 @@ export class HttpErrorHandlerService {
         };
     }
 
-    // private handleHttpError(httpError: any) {
-    //     let errorMsg: string = '';
-    //     const statusCode: number = httpError.status;
-
-    //     // When error status is undefined
-    //     if (statusCode === undefined) {
-    //         return '';
-    //     }
-    //     switch (statusCode) {
-
-    //         // Server Error
-    //         case 500: {
-    //          //   const ewpError: EwpError = <EwpError>JSON.parse(httpError._body);
-    //             //errorMsg = this.ProcessServerError(ewpError, methodName, sendErrorEmail);
-    //             break;
-    //         }
-    //         // Bad Reqeust
-    //         case 404: {
-    //             const msg: string = 'Bad server request url: ' + httpError.url;
-    //             const error: Error = new Error(msg);
-    //             this.log(error);
-    //             break;
-    //         }
-    //         // Unauthorized
-    //         case 401: {
-    //             const msg: string = 'Unauthorized server request.';
-    //             const error: Error = new Error(msg);
-    //             this.log(error);
-    //             break;
-    //         }
-    //         // When session is expired
-    //         default: {
-    //             // this.reportUnhandleError();
-    //             // $('.sa-confirm-button-container').click(function () {
-    //             //     window.location.reload(true);
-    //             // });
-    //         }
-    //     }
-    // }
+   
 
     log(error: any) {
         // Log the error to the console

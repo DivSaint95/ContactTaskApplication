@@ -1,1 +1,50 @@
-<p>contact-list-add works!</p>
+<!-- Modal -->
+<div class=" example-wrapper">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header ">
+                <div class="col-md-11">
+                    <h4 class="modal-title" id="modal-basic-title">Add Contact</h4>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn-close " aria-label="Close" (click)="onClose()"></button>
+                </div>
+            </div>
+
+            <div class="modal-body mb-2">
+
+
+                <form [formGroup]="addContactFrom">
+                    <div class="form-row row">
+                        <div class="col-md-6">
+                            <label for="recipient-name" class="col-form-label">Id</label>
+                            <input type="text" class="form-control fields" formControlName="id"
+                                [disabled]="isIdDisabled">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="recipient-name" class="col-form-label">First Name</label>
+                            <input type="text" class="form-control fields" formControlName="firstName">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="recipient-name" class="col-form-label">Last Name</label>
+                            <input type="text" class="form-control fields" formControlName="lastName">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="recipient-name" class="col-form-label">Email</label>
+                            <input type="email" class="form-control fields" formControlName="email">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center footButton">
+                    <button type="button" class="btn btn-primary mr-5 save" (click)="saveData()">Save</button>
+                    <button type="button" class="btn btn-danger ml-5" (click)="onClose()">Close</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

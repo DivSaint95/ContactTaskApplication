@@ -1,0 +1,57 @@
+.example-wrapper {
+  background: #ebebeb;
+  position: fixed;
+  border-color: rgba(255, 255, 255, 0.125);
+  color: #fff;
+  top: 101px;
+  z-index: 10;
+  margin: 0 15%;
+//   height: 100%;
+}
+
+.modal-header {
+  padding: 5px;
+  background-color: #fffbfb;
+  border: 1px solid transparent;
+  box-shadow: 0 3px 2px -3px rgba(0, 0, 0, 0.2);
+  color: #1b1a1a;
+}
+
+.modal-title{
+    font-size: 20px;
+    padding: 5px;
+}
+
+.btn-close{
+    float: right;
+    margin-right: 2px;
+}
+
+.modal-footer {
+    padding: 5px;
+    background-color: #fffbfb;
+    border: 1px solid transparent;
+    box-shadow: 0 3px 2px -3px rgba(0, 0, 0, 0.2);
+    color: #1b1a1a;
+  }
+
+  .modal-body{
+    background-color: #f1f1f1;
+  }
+
+  .col-form-label{
+    padding-left: 10px;
+    color: #000;
+  }
+
+  .fields{
+    margin: 10px;
+  }
+
+  .footButton{
+    margin: auto;
+    .save{
+        margin-right: 25px;
+    }
+  }
+
