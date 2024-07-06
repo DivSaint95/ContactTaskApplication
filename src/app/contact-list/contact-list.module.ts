@@ -21,7 +21,6 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     CommonModule,
-    
     FormsModule,
     ReactiveFormsModule,
     ContactListRoutingModule,

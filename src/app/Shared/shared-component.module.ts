@@ -8,15 +8,15 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DeleteAlertComponent } from '../Common/Components/delete-alert/delete-alert.component';
+import { SortPipe } from '../Common/Directive/sort-directive';
 
 @NgModule({
     imports: [
         CommonModule,
 
     ],
-    declarations: [DeleteAlertComponent],
-    exports: [DeleteAlertComponent
+    declarations: [SortPipe],
+    exports: [SortPipe
     ],
     providers: [],
 })

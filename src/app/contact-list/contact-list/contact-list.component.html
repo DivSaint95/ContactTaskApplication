@@ -1,24 +1,23 @@
 <div class="container-fluid mt-3">
-
     <div class="form-group row">
-        <div class="col-md-1"> <button type="button" class="btn btn-success form-control" (click)="openAddModal()">Add</button></div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-success form-control" (click)="openAddModal()">Add</button>
+        </div>
         <div class="col-md-11">
             <input type="text" class="form-control" placeholder="Filter" [(ngModel)]="filterText"
-                (ngModelChange)="filteredItems()" />
+                (ngModelChange)="onFilterChange()" />
         </div>
     </div>
     <div class="table-responsive mt-3">
         <table class="table table-bordered table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
-
-                    <th>ID</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>Email</th>
+                    <th (click)="sortData('id')">ID <span *ngIf="sortColumn === 'id'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+                    <th (click)="sortData('firstName')">First Name <span *ngIf="sortColumn === 'firstName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+                    <th (click)="sortData('lastName')">Last Name <span *ngIf="sortColumn === 'lastName'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
+                    <th (click)="sortData('email')">Email <span *ngIf="sortColumn === 'email'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span></th>
                     <th>Edit</th>
                     <th>Delete</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -37,29 +36,26 @@
             </tbody>
         </table>
     </div>
-
     <div class="row">
         <div class="col-md-6">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize"
                 (pageChange)="onPageChange($event)"></ngb-pagination>
         </div>
         <div class="col-md-6">
-            <div class="form-inline  row">
-                <div class="col-md-6 ">
-                    <label for="pageSizeSelect " class="mr-2 mt-1 PageLabel">Items per page:</label>
+            <div class="form-inline row">
+                <div class="col-md-6">
+                    <label for="pageSizeSelect" class="mr-2 mt-1 PageLabel">Items per page:</label>
                 </div>
                 <div class="col-md-6">
-                    <select class="form-control mr-2" id="pageSizeSelect" [(ngModel)]="pageSize"
-                        (change)="onPageSizeChange()">
+                    <select class="form-control mr-2" id="pageSizeSelect" [(ngModel)]="pageSize" (change)="onPageSizeChange()">
                         <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
                     </select>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <app-contact-list-add *ngIf="openAddModel" (closeAddModal)='closeAddModal($event)'></app-contact-list-add>
 
-<app-contact-list-update  *ngIf="openEditModel" [EditID]="EditId" (closeEditModal)='closeEditModal($event)'></app-contact-list-update>
+<app-contact-list-update *ngIf="openEditModel" [EditID]="EditId" (closeEditModal)='closeEditModal($event)'></app-contact-list-update>
