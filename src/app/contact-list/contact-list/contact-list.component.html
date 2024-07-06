@@ -1,10 +1,14 @@
-<div class="container mt-5">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Filter" [(ngModel)]="filterText"
-            (ngModelChange)="onFilterChange()" />
+<div class="container-fluid mt-3">
+
+    <div class="form-group row">
+        <div class="col-md-1"> <button type="button" class="btn btn-success form-control" (click)="openAddModal()">Add</button></div>
+        <div class="col-md-11">
+            <input type="text" class="form-control" placeholder="Filter" [(ngModel)]="filterText"
+                (ngModelChange)="filteredItems()" />
+        </div>
     </div>
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-striped table-hover">
             <thead class="thead-dark">
                 <tr>
 
@@ -12,19 +16,50 @@
                     <th>FirstName</th>
                     <th>LastName</th>
                     <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
 
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of getcontactlistData">
+                <tr *ngFor="let item of paginatedItems">
                     <td>{{ item.id }}</td>
                     <td>{{ item.firstName }}</td>
                     <td>{{ item.lastName }}</td>
                     <td>{{ item.email }}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" (click)="openEditModal(item.id)">Edit</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="onDeleteData(item.id)">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    <!-- <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize"
-        (pageChange)="onPageChange($event)"></ngb-pagination> -->
+
+    <div class="row">
+        <div class="col-md-6">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="pageSize"
+                (pageChange)="onPageChange($event)"></ngb-pagination>
+        </div>
+        <div class="col-md-6">
+            <div class="form-inline  row">
+                <div class="col-md-6 ">
+                    <label for="pageSizeSelect " class="mr-2 mt-1 PageLabel">Items per page:</label>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-control mr-2" id="pageSizeSelect" [(ngModel)]="pageSize"
+                        (change)="onPageSizeChange()">
+                        <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+<app-contact-list-add *ngIf="openAddModel" (closeAddModal)='closeAddModal($event)'></app-contact-list-add>
+
+<app-contact-list-update  *ngIf="openEditModel" [EditID]="EditId" (closeEditModal)='closeEditModal($event)'></app-contact-list-update>
