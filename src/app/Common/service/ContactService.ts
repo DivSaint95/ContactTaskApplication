@@ -30,13 +30,7 @@ export class ContactService extends BaseService {
     // method to ADD contact data
     public addContactData(contactModel: ContactModel): Observable<string> {
         let url: string = environment.ContactServiceURL + 'Contact'
-        // return this.post<ContactModel>(url, contactModel, null, "addContactData");
-        return this.post<ContactModel>(url, contactModel,null, "addContactData").pipe(
-            catchError(error => {
-              this.handleError.handleError(error);
-              return throwError(error);
-            })
-          );
+        return this.post<ContactModel>(url, contactModel, null, "addContactData");
     }
 
     // method to UPDATE contact data 
